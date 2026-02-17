@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "composite": true,
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "types": [
+      "vite/client"
+    ]
+  },
+  "references": [
+    { "path": "../shared" }
+  ],
+  "include": [
+    "src/**/*.ts"
+  ]
+}

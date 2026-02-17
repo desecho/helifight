@@ -1,0 +1,162 @@
+:root {
+  color-scheme: light;
+  --bg-main: #dce9f4;
+  --bg-panel: #0f2d42;
+  --bg-panel-soft: #184866;
+  --text-primary: #ffffff;
+  --text-dim: #b6d0e2;
+  --accent: #ffc857;
+  --danger: #f35b5b;
+  --ok: #66d17a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.8), transparent 40%),
+    linear-gradient(165deg, #eff6fd, var(--bg-main));
+}
+
+#app {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+#panel {
+  background: linear-gradient(180deg, var(--bg-panel), var(--bg-panel-soft));
+  color: var(--text-primary);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: inset -1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.panel-title {
+  margin: 0;
+  font-size: 1.7rem;
+  letter-spacing: 0.02em;
+}
+
+.panel-subtitle {
+  margin: 0;
+  color: var(--text-dim);
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+input {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(7, 20, 31, 0.38);
+  color: var(--text-primary);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 140ms ease, opacity 140ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  transform: none;
+}
+
+button.primary {
+  background: var(--accent);
+  color: #102739;
+}
+
+button.secondary {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+}
+
+button.rematch {
+  background: var(--ok);
+  color: #102739;
+}
+
+.status {
+  min-height: 48px;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: var(--text-dim);
+}
+
+.status.error {
+  color: #ffd4d4;
+}
+
+.meta {
+  background: rgba(8, 23, 35, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.meta strong {
+  color: #fff;
+}
+
+#game-shell {
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+#game-container {
+  width: min(1280px, 100%);
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 24px 44px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 1000px) {
+  #app {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  #panel {
+    box-shadow: none;
+  }
+
+  #game-shell {
+    padding: 8px;
+  }
+}
