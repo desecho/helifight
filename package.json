@@ -9,8 +9,8 @@
     "dev": "concurrently -n server,client -c cyan,magenta \"npm run dev -w @helifight/server\" \"npm run dev -w @helifight/client\"",
     "dev:server": "npm run dev -w @helifight/server",
     "dev:client": "npm run dev -w @helifight/client",
-    "build": "npm run --workspaces --if-present build",
-    "test": "npm run --workspaces --if-present test"
+    "build": "npm run build -w @helifight/shared && npm run build -w @helifight/server && npm run build -w @helifight/client",
+    "test": "npm run test -w @helifight/shared && npm run test -w @helifight/server && npm run test -w @helifight/client"
   },
   "devDependencies": {
     "@types/node": "^22.13.4",

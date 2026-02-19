@@ -48,6 +48,38 @@ npm run build
 npm run test
 ```
 
+## Deploy
+
+Deploy as a single Node service:
+
+1. Install + build:
+
+```bash
+npm ci
+npm run build
+```
+
+2. Start the production server:
+
+```bash
+npm run start -w @helifight/server
+```
+
+The server automatically serves the built client from `packages/client/dist` when present.
+Use `/health` for health checks.
+
+### Docker
+
+Build and run with Docker:
+
+```bash
+docker build -t helifight:latest .
+docker run --rm -p 3000:3000 \
+  -e PORT=3000 \
+  -e CORS_ORIGIN="*" \
+  helifight:latest
+```
+
 ## Environment variables
 
 ### Server

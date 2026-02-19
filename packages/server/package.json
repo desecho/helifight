@@ -7,7 +7,10 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc -b",
+    "build": "npm run clean && npm run build:types && npm run build:bundle",
+    "clean": "node -e \"const fs=require('node:fs'); fs.rmSync('dist',{recursive:true,force:true}); fs.rmSync('tsconfig.tsbuildinfo',{force:true});\"",
+    "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
+    "build:bundle": "node scripts/build.mjs",
     "start": "node dist/index.js",
     "test": "vitest run"
   },

@@ -6,7 +6,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc -b",
+    "build": "npm run clean && npm run build:types && npm run build:bundle",
+    "clean": "node -e \"const fs=require('node:fs'); fs.rmSync('dist',{recursive:true,force:true}); fs.rmSync('tsconfig.tsbuildinfo',{force:true});\"",
+    "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
+    "build:bundle": "node scripts/build.mjs",
     "test": "vitest run"
   }
 }
